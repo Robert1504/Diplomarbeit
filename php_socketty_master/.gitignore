@@ -1,0 +1,11 @@
+.idea/
+.vagrant/
+composer.phar
+profiles/
+vendor/
+node_modules/
+bower_components/
+composer.lock
+phpunit.xml
+Vagrantfile
+vagrant_bootstrap.sh
