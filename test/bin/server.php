@@ -30,26 +30,72 @@ class Chat implements MessageComponentInterface {
 	}
 
 	public function onMessage(ConnectionInterface $from,  $data) {
-		$from_id = $from->resourceId;
-		$data = json_decode($data);
-		$type = $data->type;
+		$from_id = $from->resourceId;	//ID des Senders, des Clients
+		$data = json_decode($data);		//gesendete Daten (Nachricht), hier sind Daten aus chat_msg (client)
+		$type = $data->type;			//type ist type aus .onopen vom client
+		//Ab hier wird zurückgesendet, um am Client auszugeben
 		switch ($type) {
-			case 'chat':
-				$user_id = $data->user_id;
-				$chat_msg = $data->chat_msg;
-				//msg from sender
-				$response_from = "<span style='color:#999'><b>".$user_id.":</b> ".$chat_msg."</span><br><br>";
-				//msg from the other
-				$response_to = "<b>".$user_id."</b>: ".$chat_msg."<br><br>";
-				//Output
+			case 'cmd':
+				//$user_id = $data->user_id;
+				$chat_msg = trim($data->chat_msg);	//nachricht aus chat_msg (client) wird hier gespeichert
+				$ping = "ping";
+				//msg from sender, wird ausgegeben
+				$response_from = "<span style='color:black'><b>".$chat_msg."</span><br><br>";
 				$from->send(json_encode(array("type"=>$type,"msg"=>$response_from)));
-				foreach($this->clients as $client)
+				//msg from the other, wird ausgegeben, kann eigentlich an response_from dazu getan werden
+				//logik für cmd
+				
+				//echo "----";
+				//echo $chat_msg;
+				//echo "----";
+				//echo $ping;
+				//echo "----";
+
+				if(strcmp($chat_msg, $ping) !== 0)
 				{
-					if($from!=$client)
+					echo "not";
+				}
+				else
+				{
+					echo "equal";
+					//$response_to = "<span style='color:grey'><b>ping funktioniert</b></span><br><br>";
+					//$from->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
+					$ping_out = shell_exec('ping 127.0.0.1');
+
+					//$ping_out = str_replace('Ü', "Ue", $ping_out);
+					//$ping_out = str_replace('Ö', "Oe", $ping_out);
+					//$ping_out = str_replace('Ä', "Ae", $ping_out);
+					//$ping_out = str_replace('ü', "ue", $ping_out);
+					//$ping_out = str_replace('ö', "oa", $ping_out);
+					//$ping_out = str_replace('ä', "ae", $ping_out);
+
+					//$ping_out = shell_exec('ssh 127.0.0.1');
+					//$ping_out = shell_exec('dir');
+					//$ping_out = urlencode($ping_out);
+					//$ping_out = substr($ping_out, 0, 20);
+					setlocale(LC_ALL, 'de_DE');
+					$ping_out = iconv('UTF-8', 'ASCII//IGNORE', $ping_out);
+					echo $ping_out;
+					$response_to = "<span style='color:grey'><b><pre>$ping_out</pre></b></span><br><br>";
+					//$response_to = $ping_out;
+					//$from->send(json_encode(array("type"=>$type,"msg"=>$ping_out)));
+					$from->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
+				}
+
+				//$response_to = "<span style='color:grey'><b>".$chat_msg."</span><br><br>";
+				//Output, from hat Objekt des senders
+				//$from->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
+				//$client->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
+				
+				/*	für chat wichtig, sendet an alle clients
+				foreach($this->clients as $client)	//geht durch alle clients durch
+				{
+					if($from!=$client)	//prüft ob sender =/= client
 					{
 						$client->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
 					}
 				}
+				*/
 				break;
 		}
 	}

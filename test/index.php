@@ -25,14 +25,15 @@ $session = mt_rand(1,999);  //user_id
 			},100);
 		});
 	</script>
-	<div id="wrapper">
-	<div id="connection"></div></br>
-	<div id="chat_output"></div>
+	<div id="wrapper">	<!-- begrenzt das feld mit css -->
+	<div id="connection"></div></br>	<!-- schaut ob eine Verbindung zum Internet möglich ist -->
+	<div id="chat_output"></div>	<!-- cmd wird ausgegeben -->
 		<textarea id="chat_input" placeholder="Write your cmd here!"></textarea>
 		<script type="text/javascript">
 			jQuery(function($){
 				//Websocket
-				var websocket_server = new WebSocket("ws://127.0.0.1:8080/");
+				var websocket_server = new WebSocket("ws://127.0.0.1:8080/");	//socketserver wird gestartet
+																				//unterstützung von meisten browsern
 				websocket_server.onopen = function(e) {
 					websocket_server.send(
 						JSON.stringify({
@@ -43,28 +44,28 @@ $session = mt_rand(1,999);  //user_id
 				};
 
 				websocket_server.onerror = function(e) {
-				//Errorhandling
+					//Errorhandling
 				}
 
 				websocket_server.onmessage = function(e)
 				{
 					var json = JSON.parse(e.data);
 					switch(json.type) {
-						case 'chat':
+						case 'cmd':
 							$('#chat_output').append(json.msg);
 							break;
 					}
 				}
 				//Events
 				$('#chat_input').on('keyup',function(e){
-					if(e.keyCode==13 && !e.shiftKey)
+					if(e.keyCode==13 && !e.shiftKey)	//überprüft enter- und shifttaste 
 					{
-						var chat_msg = $(this).val();
-						websocket_server.send(//php_exec?
-							JSON.stringify({
-								'type':'chat',
-								'user_id':<?php echo $session; ?>,
-								'chat_msg':chat_msg
+						var chat_msg = $(this).val();	//speichert nachricht zwischen
+						websocket_server.send(			//und sendet dann an server
+							JSON.stringify({			//JSON-msg wird rüber gesendet
+								'type':'cmd',			//sagt aus um welche nachricht es sich handelt, chat
+								'user_id': <?php echo $session; ?>,	//id von ganz oben
+								'chat_msg':chat_msg		//eigentliche msg wird gesendet aus var chat_msg
 							})
 						);
 						$(this).val('');
