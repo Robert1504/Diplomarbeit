@@ -22,10 +22,12 @@ $session = mt_rand(1,999);  //user_id
 	    <div class="wrapper" id="message-wrapper"><!-- begrenzt das feld mit css -->
                 
                 <div class="input_command">
-                    <span></span>
+                    <span>Old Command</span>
                 </div>
                 <!-- cmd wird ausgegeben -->    
-                <div class="output_command" id="chat_output"></div>
+                <div class="output_command" id="chat_output">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in mauris ultricies sem sodales dictum. Nunc lacinia ut risus lacinia imperdiet. Morbi gravida, lectus in ullamcorper venenatis, massa quam lacinia ipsum, nec auctor est felis quis ipsum. Duis quam nulla, finibus ac accumsan ut, maximus a augue.
+            	</div>
 	    </div>
         <div class="chat_input">
             <textarea id="chat_input" placeholder="Write your cmd here!"></textarea>
