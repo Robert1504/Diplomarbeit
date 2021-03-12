@@ -65,11 +65,10 @@ $session = mt_rand(1,999);  //user_id
                 <footer class="mdl-mini-footer">
                     <div class="mdl-mini-footer__left-section">
                         <div class="mdl-logo">Senioren-Notfall-Hilfe-System</div>
-                            <ul class="mdl-mini-footer__link-list">
-                            <p>HTL Hollabrunn</p>
-                            <!--<li><a href="#">Help</a></li>
-                            <li><a href="#">Privacy & Terms</a></li>-->
-                            </ul>
+                        <ul class="mdl-mini-footer__link-list">
+                            <li><a class="link_htl" target="_blank" href="https://www.htl-hl.ac.at/web/">HTL Hollabrunn</a></li>
+                            <!--<li><a href="#">Privacy & Terms</a></li>-->
+                        </ul>
                     </div>
                 </footer>
             </main>

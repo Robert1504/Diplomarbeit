@@ -16,7 +16,6 @@ body {
     height: max-content;
     display: flex;
     flex-direction: column;
-    width: 30rem;
     align-items: center;
     flex: 0;
 }
@@ -47,9 +46,9 @@ body {
     flex-direction: column;
     row-gap: 0.5rem;
     align-items: center;
-    border: 1px solid #536DFE;
+    border: 2px solid #536DFE;
     border-radius: 5px;
-    background-color: #1D1D1D;
+    background-color: #424242;
 }
 
 .button_width{
@@ -60,7 +59,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #121212;
+    background-color: #353535;
 }
 
 .page-content-1{
@@ -74,9 +73,9 @@ body {
     -webkit-box-sizing: border-box;
     width: 18rem;
     height: 18rem;
-    border: 1px solid #536DFE;
-    border-radius: 5px;
-    background-color: #1D1D1D;
+    border: 2px solid #536DFE;
+    border-radius: 10px;
+    background-color: #424242;
     margin: 10px;
 }
 
@@ -96,10 +95,10 @@ body {
     flex: 1;
     max-height: 100%;
     overflow-y: auto;
-    background-color: #1D1D1D;
-    border-radius: 4px;
+    background-color: #424242;
+    border-radius: 10px;
     padding: 1rem;
-    border: 1px solid #536DFE;
+    border: 2px solid #536DFE;
 }
 
 .output_command{
