@@ -46,7 +46,7 @@ class Chat implements MessageComponentInterface {
 				$disconnectcmpr = "dcmpr";
 				$test_conncmpr = "t_cmpr";
 				//msg from sender, wird ausgegeben
-				$response_from = "<span style='color: #000000; font-weight: 500; font-style: italic;'>$msg</span><br>";
+				$response_from = "<span style='color: #9E9E9E; font-weight: 500; font-style: italic;'>$msg</span><br>";
 				$from->send(json_encode(array("type"=>$type,"msg"=>$response_from)));
 				//msg from the other, wird ausgegeben, kann eigentlich an response_from dazu getan werden
 
@@ -60,7 +60,7 @@ class Chat implements MessageComponentInterface {
 					setlocale(LC_ALL, 'de_DE');
 					$connectcmpr_out = iconv('UTF-8', 'ASCII//IGNORE', $connectcmpr_out);
 					echo $connectcmpr_out;
-					$response_to = "<span style='color: #4c4f4d; font-weight: 200; font-style: italic;'><pre>$connectcmpr_out</pre></span><br>";
+					$response_to = "<span style='color: #FFFFFF; font-weight: 200; font-style: italic;'><pre>$connectcmpr_out</pre></span><br>";
 					$from->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
 				}
 				elseif(strcmp($msg, $disconnectcmpr) == 0) {
@@ -73,7 +73,7 @@ class Chat implements MessageComponentInterface {
 					setlocale(LC_ALL, 'de_DE');
 					$disconnectcmpr_out = iconv('UTF-8', 'ASCII//IGNORE', $disconnectcmpr_out);
 					echo $disconnectcmpr_out;
-					$response_to = "<span style='color: #4c4f4d; font-weight: 200; font-style: italic;'><pre>$disconnectcmpr_out</pre></span><br>";
+					$response_to = "<span style='color: #FFFFFF; font-weight: 200; font-style: italic;'><pre>$disconnectcmpr_out</pre></span><br>";
 					$from->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
 				}
 				elseif(strcmp($msg, $test_conncmpr) == 0) {
@@ -86,7 +86,7 @@ class Chat implements MessageComponentInterface {
 					setlocale(LC_ALL, 'de_DE');
 					$test_conncmpr_out = iconv('UTF-8', 'ASCII//IGNORE', $test_conncmpr_out);
 					echo $test_conncmpr_out;
-					$response_to = "<span style='color: #4c4f4d; font-weight: 200; font-style: italic;'><pre>$test_conncmpr_out</pre></span><br>";
+					$response_to = "<span style='color: #FFFFFF; font-weight: 200; font-style: italic;'><pre>$test_conncmpr_out</pre></span><br>";
 					$from->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
 				}		
 				break;
@@ -107,42 +107,4 @@ $server = IoServer::factory(
 	8080
 );
 $server->run();
-
-//echo "----";
-//echo $chat_msg;
-//echo "----";
-//echo $ping;
-//echo "----";
-
-//$response_to = "<span style='color:grey'><b>ping funktioniert</b></span><br><br>";
-//$from->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
-
-//$response_to = $ping_out;
-//$from->send(json_encode(array("type"=>$type,"msg"=>$ping_out)));
-
-//$ping_out = str_replace('Ü', "Ue", $ping_out);
-//$ping_out = str_replace('Ö', "Oe", $ping_out);
-//$ping_out = str_replace('Ä', "Ae", $ping_out);
-//$ping_out = str_replace('ü', "ue", $ping_out);
-//$ping_out = str_replace('ö', "oa", $ping_out);
-//$ping_out = str_replace('ä', "ae", $ping_o
-//$ping_out = shell_exec('ssh 127.0.0.1');
-//$ping_out = shell_exec('dir');
-//$ping_out = urlencode($ping_out);
-//$ping_out = substr($ping_out, 0, 20);
-
-//$response_to = "<span style='color:grey'><b>".$chat_msg."</span><br><br>";
-//Output, from hat Objekt des senders
-//$from->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
-//$client->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
-
-/*	für chat wichtig, sendet an alle clients
-foreach($this->clients as $client)	//geht durch alle clients durch
-{
-	if($from!=$client)	//prüft ob sender =/= client
-	{
-		$client->send(json_encode(array("type"=>$type,"msg"=>$response_to)));
-	}
-}
-*/
 ?>

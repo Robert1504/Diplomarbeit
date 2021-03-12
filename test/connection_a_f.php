@@ -13,9 +13,9 @@
 	}
 	
 	if (conn() == 1) {
-		echo "Internet connection assured!";
+		echo "connected";
 	}
 	else {
-		echo "Internet connection failed!";
+		echo "not connected";
 	}
 ?>
