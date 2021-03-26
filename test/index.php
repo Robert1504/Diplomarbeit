@@ -7,9 +7,13 @@ $session = mt_rand(1,999);  //user_id
         <title>SNHS</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-indigo.min.css" /> 
-        <link rel="stylesheet" type="text/css" href="style.css?ver=<?php echo rand(111,999)?>">
+
+        <link rel="stylesheet" href="mdl/material.min.css">
+        <link rel="stylesheet" href="mdl/material_style.css">
+
+        <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+        <!--<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-indigo.min.css" />-->
+        <link rel="stylesheet" type="text/css" href="style.css?ver=">
     </head>
     <body>
         <!-- Simple header with fixed tabs. -->
@@ -74,7 +78,7 @@ $session = mt_rand(1,999);  //user_id
             </main>
         </div>
     </body>
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="mdl/material.min.js"></script>
+    <script src="jquery.js"></script>
     <script src="script.js"></script>
 </html>

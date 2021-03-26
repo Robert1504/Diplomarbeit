@@ -47,7 +47,7 @@ body {
     row-gap: 0.5rem;
     align-items: center;
     border: 2px solid #536DFE;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #424242;
 }
 
@@ -105,7 +105,8 @@ body {
     display: flex;
     flex-direction: column;
     width: 95%;
-    background-color: #673AB7;
+    background-color: #FF4081;
+    /*background-color: #673AB7;*/
     color: #fefefe;
     border-radius: 10px;
     padding: 0.5rem 1rem 0.5rem 1rem;
